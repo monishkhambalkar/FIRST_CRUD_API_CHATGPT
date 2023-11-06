@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Login and Logout Page</title>
+</head>
+<body>
+
+    <!-- Login User  -->
+    <div id="login-container">
+        <h2>Login</h2>
+        <form id="login-form">
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" required><br><br>
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required><br><br>
+            <input type="checkbox" value="" name="saveLogin"> Save Login <br><br>
+
+            <button type="submit">Login</button>
+        </form>
+    </div>
+
+    <!-- // Create New User -->
+
+    <div id="signin-container">
+        <h2>Signin</h2>
+        <form id="login-form">
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" required><br><br>
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required><br><br>
+            <button type="submit">Signin</button>
+        </form>
+    </div>
+
+    <!-- // Forget Password -->
+
+    <div id="logout-container" style="display: none;">
+        <h2>Welcome, <span id="user-display"></span>!</h2>
+        <button id="logout-button">Logout</button>
+    </div>
+
+    <script>
+        // Check if the user is logged in (you can replace this with your authentication logic)
+        const isLoggedIn = false; // Change this to true if the user is logged in
+
+        // Elements
+        const loginContainer = document.getElementById('login-container');
+        const logoutContainer = document.getElementById('logout-container');
+        const userDisplay = document.getElementById('user-display');
+        const loginForm = document.getElementById('login-form');
+        const logoutButton = document.getElementById('logout-button');
+
+        // Event listener for login form submission
+        loginForm.addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            // Replace this with your authentication logic (e.g., check username and password)
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+
+            // Simulate successful login (you should replace this with actual authentication logic)
+            if (username === 'yourusername' && password === 'yourpassword') {
+                // Update UI for logged-in state
+                loginContainer.style.display = 'none';
+                logoutContainer.style.display = 'block';
+                userDisplay.textContent = username;
+            } else {
+                alert('Login failed. Please check your username and password.');
+            }
+        });
+
+        // Event listener for logout button
+        logoutButton.addEventListener('click', function () {
+            // Update UI for logged-out state
+            loginContainer.style.display = 'block';
+            logoutContainer.style.display = 'none';
+            document.getElementById('username').value = ''; // Clear the username field
+            document.getElementById('password').value = ''; // Clear the password field
+        });
+
+        // Initial UI setup based on login state
+        if (isLoggedIn) {
+            loginContainer.style.display = 'none';
+            logoutContainer.style.display = 'block';
+            userDisplay.textContent = 'yourusername'; // Set the username
+        }
+    </script>
+</body>
+</html>
